@@ -1,4 +1,5 @@
 ### IntelliJ IDEA ###
+*.class
 out/
 *.iml
 !pom.xml
