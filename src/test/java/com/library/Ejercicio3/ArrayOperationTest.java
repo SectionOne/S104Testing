@@ -2,27 +2,28 @@ package com.library.Ejercicio3;
 
 import com.library.Ejercicio3.model.ArrayOperations;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArrayOperationTest {
 
     @Test
-    public void testGetElementAtIndex_ThrowsArrayIndexOutOfBoundsException(){
+    public void testGetElementAtIndex_ThrowsArrayIndexOutOfBoundsException() {
         ArrayOperations arrayOperations = new ArrayOperations();
-        int [] array = {1, 2, 3, 4, 5};
+        int[] array = {1, 2, 3, 4, 5};
 
-        try {
+        ArrayIndexOutOfBoundsException exception = assertThrows(ArrayIndexOutOfBoundsException
+                .class, () -> {
             arrayOperations.getElementAtIndex(array, 10);
-            fail("Se esperaba una ArrayIndexOutOfBoundsException, pero no se lanzó");
-        }catch(ArrayIndexOutOfBoundsException e){
-            assertEquals("Índice fuera de los límites del array", e.getMessage());
-        }
-        try {
+        });
+
+        System.out.println("Mensaje de la 'exception': " +  exception.getMessage());
+
+        assertEquals("Índice fuera de los límites del array", exception.getMessage());
+
+        assertDoesNotThrow(() -> {
             int value = arrayOperations.getElementAtIndex(array, 2);
             assertEquals(3, value);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            fail("No se esperaba una ArrayIndexOutOfBoundsException, pero se lanzó ");
-        }
+        });
     }
-
 }

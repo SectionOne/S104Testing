@@ -17,10 +17,9 @@ public class DniCalculatorTest {
             "55555555, K",
             "66666666, Q",
             "77777777, B",
-            "88888888, P",
             "88888888, Y"
 
-    }) //En el último DNI dejo la letra correcta en uno y errónea otro
+    })
     void testCalculationDni(int numberDni, char letter){
         DniCalculator dniCalculator = new DniCalculator();
         assertEquals(letter, dniCalculator.letterCalculation(numberDni));
